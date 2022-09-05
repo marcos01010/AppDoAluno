@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:id="@+id/txSiglaMateria"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sigla"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            />
+
+        <TextView
+            android:id="@+id/txDescricaoMateria"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Materia"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/txSiglaMateria"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            />
+
+        <TextView
+            android:id="@+id/txProfessor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Professor"
+            app:layout_constraintTop_toBottomOf="@id/txDescricaoMateria"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            />
+
+        <TextView
+            android:id="@+id/lbNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nota"
+            app:layout_constraintTop_toBottomOf="@+id/txProfessor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imgStatusMateria"
+            android:layout_marginStart="8dp"
+            />
+
+        <TextView
+            android:id="@+id/txNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            app:layout_constraintTop_toBottomOf="@+id/txProfessor"
+            app:layout_constraintLeft_toRightOf="@+id/lbNota"
+            app:layout_constraintBottom_toBottomOf="@+id/imgStatusMateria"
+            android:layout_marginLeft="8dp"
+            />
+
+        <TextView
+            android:id="@+id/lbFrequencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/frequencia"
+            app:layout_constraintTop_toBottomOf="@+id/txProfessor"
+            app:layout_constraintLeft_toRightOf="@+id/txNota"
+            app:layout_constraintBottom_toBottomOf="@+id/imgStatusMateria"
+            android:layout_marginStart="8dp"
+            />
+
+        <TextView
+            android:id="@+id/txFrequencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            app:layout_constraintTop_toBottomOf="@+id/txProfessor"
+            app:layout_constraintLeft_toRightOf="@+id/lbFrequencia"
+            app:layout_constraintBottom_toBottomOf="@+id/imgStatusMateria"
+            android:layout_marginStart="8dp"
+            />
+
+        <ImageView
+            android:id="@+id/imgStatusMateria"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_on"
+            app:layout_constraintTop_toBottomOf="@+id/txProfessor"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/indicativo_status_materia"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

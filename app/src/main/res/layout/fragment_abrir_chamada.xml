@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AbrirChamadaFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Spinner
+        android:id="@+id/spMateria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/lbTemChamada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/txTempoChamada"
+        android:text="@string/tempo_para_resposta"
+        app:layout_constraintTop_toBottomOf="@+id/spMateria"/>
+
+    <EditText
+        android:id="@+id/txTempoChamada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="00:05"
+        app:layout_constraintTop_toBottomOf="@+id/lbTemChamada"
+        android:importantForAutofill="no"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/btnAbrirChamada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/abrir_chamada"
+        app:layout_constraintTop_toBottomOf="@+id/txTempoChamada"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerChamadasAbertas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btnAbrirChamada"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

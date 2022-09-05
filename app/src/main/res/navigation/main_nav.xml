@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/materiaFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.MateriaFragment"
+        android:label="@string/materias"
+        tools:layout="@layout/fragment_materia" />
+    <fragment
+        android:id="@+id/professorFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.ProfessorFragment"
+        android:label="@string/professores"
+        tools:layout="@layout/fragment_professor" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.HomeFragment"
+        android:label="@string/inicio"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.PerfilFragment"
+        android:label="@string/meu_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/chamadaFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.ChamadaFragment"
+        android:label="@string/chamada"
+        tools:layout="@layout/fragment_chamada" />
+    <fragment
+        android:id="@+id/acenoFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.AcenoFragment"
+        android:label="@string/reunir"
+        tools:layout="@layout/fragment_aceno" />
+    <fragment
+        android:id="@+id/abrirChamadaFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.AbrirChamadaFragment"
+        android:label="Abrir Chamada"
+        tools:layout="@layout/fragment_abrir_chamada" >
+        <action
+            android:id="@+id/action_abrirChamadaFragment_to_alunosFragment"
+            app:destination="@id/alunosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/alunosFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.AlunosFragment"
+        android:label="AlunosFragment"
+        tools:layout="@layout/fragment_alunos" />
+    <fragment
+        android:id="@+id/materiaProfessorFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.MateriaProfessorFragment"
+        android:label="MateriaProfessorFragment"
+        tools:layout="@layout/fragment_materia_professor"/>
+    <fragment
+        android:id="@+id/horarioFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.HorarioFragment"
+        android:label="HorarioFragment"
+        tools:layout="@layout/fragment_horario"/>
+</navigation>

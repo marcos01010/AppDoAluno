@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="8dp">
+        <TextView
+            android:id="@+id/txSiglaMateriaProfessor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sigla"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            />
+        <TextView
+            android:id="@+id/txNomeMateiraProfessor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_materia"
+            app:layout_constraintTop_toBottomOf="@+id/txSiglaMateriaProfessor"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txNomeMateiraProfessor"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/confirmar"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txNomeMateiraProfessor"
+            app:layout_constraintLeft_toRightOf="@+id/btnCancelar"
+            android:text="@string/adiar"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

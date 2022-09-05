@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.PerfilFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDadosPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/lbNome"
+                android:text="@string/nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:labelFor="@id/etxUsuario"/>
+            <TextView
+                android:id="@+id/lbRA"
+                android:text="@string/ra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/lbNome"
+                app:layout_constraintStart_toStartOf="parent"
+                android:labelFor="@id/etxUsuario"/>
+            <TextView
+                android:id="@+id/txNome"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/lbNome"
+                android:labelFor="@+id/lbNome"
+                android:contentDescription="@string/seu_nome" />
+            <TextView
+                android:id="@+id/txRa"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txNome"
+                app:layout_constraintLeft_toRightOf="@+id/lbRA"
+                android:labelFor="@+id/lbRA"
+                android:contentDescription="@string/seu_n_mero_de_ra" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txLogin"
+        android:text="@string/usuario_siga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cardDadosPerfil"
+        android:labelFor="@id/etxUsuario"/>
+
+    <EditText
+        android:id="@+id/etxUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/txLogin"
+        android:autofillHints="username"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/txSenha"
+        android:text="@string/senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etxUsuario"
+        android:labelFor="@id/etxSenha"/>
+
+    <EditText
+        android:id="@+id/etxSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txSenha"
+        android:autofillHints="password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnAutenticaSiga"
+        android:text="@string/autenticar_com_siga"
+        android:enabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etxSenha"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">App do Aluno</string>
+    <string name="materias">Matérias</string>
+    <string name="professores">Professores</string>
+    <string name="inicio">Início</string>
+    <string name="frequencia">Frequência</string>
+    <string name="nota">Nota</string>
+    <string name="indicativo_status_materia">Indicativo status matéria</string>
+    <string name="zero">0</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="senha">Senha</string>
+    <string name="autenticar_com_siga">Autenticar com SIGA</string>
+    <string name="usuario_siga">Usuário SIGA:</string>
+    <string name="meu_perfil">Meu Perfil</string>
+    <string name="nome">Nome:</string>
+    <string name="ra">RA:</string>
+    <string name="nome_materia">Nome Matéria</string>
+    <string name="professor">Professor</string>
+    <string name="outras_reunioes">Outras Reuniões</string>
+    <string name="reunir">Reunir</string>
+    <string name="tempo">Tempo</string>
+    <string name="chamada">Chamada</string>
+    <string name="tempo_para_resposta">Tempo para resposta:</string>
+    <string name="abrir_chamada">Abrir Chamada</string>
+    <string name="aluno">Aluno</string>
+    <string name="sigla">Sigla</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="adiar">Adiar</string>
+    <string name="horaio">Horáio</string>
+    <string name="seu_n_mero_de_ra">Seu número de RA</string>
+    <string name="seu_nome">Seu Nome</string>
+</resources>
