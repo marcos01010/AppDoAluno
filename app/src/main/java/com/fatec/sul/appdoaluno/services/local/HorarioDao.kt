@@ -12,4 +12,7 @@ interface HorarioDao {
 
     @Query("select * from horario")
     fun buscarTodos(): List<Horario>
+
+    @Query("select hora from horario where sigla like :sigla")
+    fun buscarHorario(sigla: String): String
 }

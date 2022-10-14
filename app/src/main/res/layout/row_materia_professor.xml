@@ -31,23 +31,45 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             />
+        <TextView
+            android:id="@+id/txNomeProfessorMateriaProfessor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/professor"
+            app:layout_constraintTop_toBottomOf="@+id/txNomeMateiraProfessor"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            />
 
         <Button
-            android:id="@+id/btnCancelar"
+            android:id="@+id/btnConfirmar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/txNomeMateiraProfessor"
+            app:layout_constraintTop_toBottomOf="@+id/txNomeProfessorMateriaProfessor"
             app:layout_constraintStart_toStartOf="parent"
+            android:enabled="false"
             android:text="@string/confirmar"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             />
         <Button
+            android:id="@+id/btnAdiar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/txNomeMateiraProfessor"
-            app:layout_constraintLeft_toRightOf="@+id/btnCancelar"
+            app:layout_constraintTop_toBottomOf="@+id/txNomeProfessorMateriaProfessor"
+            app:layout_constraintLeft_toRightOf="@+id/btnConfirmar"
+            android:enabled="false"
             android:text="@string/adiar"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            />
+        <Button
+            android:id="@+id/btnAssumir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txNomeProfessorMateriaProfessor"
+            app:layout_constraintLeft_toRightOf="@+id/btnAdiar"
+            android:text="@string/assumir"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             />

@@ -4,16 +4,18 @@
         android:title="@string/materias"/>
     <item android:id="@+id/professorFragment"
         android:title="@string/professores"/>
-    <item android:id="@+id/perfilFragment"
-        android:title="@string/meu_perfil"/>
     <item android:id="@+id/chamadaFragment"
         android:title="@string/chamada"/>
     <item android:id="@+id/acenoFragment"
         android:title="@string/reunir"/>
     <item android:id="@+id/abrirChamadaFragment"
-        android:title="@string/abrir_chamada"/>
+        android:title="@string/abrir_chamada"
+        android:visible="false"/>
     <item android:id="@+id/materiaProfessorFragment"
+        android:visible="false"
         android:title="@string/materias"/>
     <item android:id="@+id/horarioFragment"
     android:title="@string/horaio"/>
+    <item android:id="@+id/perfilFragment"
+        android:title="@string/meu_perfil"/>
 </menu>

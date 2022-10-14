@@ -30,4 +30,8 @@
     <string name="horaio">Horáio</string>
     <string name="seu_n_mero_de_ra">Seu número de RA</string>
     <string name="seu_nome">Seu Nome</string>
+    <string name="codigo_verificacao">Código de verificação(Apenas professor)</string>
+    <string name="verificar">Verificar</string>
+    <string name="assumir">Assumir</string>
+    <string name="sem_professor_declarado">Sem professor declarado</string>
 </resources>

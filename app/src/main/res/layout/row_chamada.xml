@@ -46,21 +46,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"/>
 
-        <TextView
-            android:id="@+id/txCountadorAcenos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zero"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgStatusMateria"
-            android:layout_marginEnd="8dp"/>
-
         <ImageView
-            android:id="@+id/imgStatusMateria"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_confirma"
+            android:id="@+id/imgRespostaChamada"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_presente"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

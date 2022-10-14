@@ -1,6 +1,8 @@
 package com.fatec.sul.appdoaluno.repository
 
+import com.fatec.sul.appdoaluno.util.SingletonApi
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -13,9 +15,33 @@ class RetrofitClient private constructor(){
             val httpClient = OkHttpClient.Builder()
             httpClient.addInterceptor { chain ->
                 val request = chain.request()
-                    .newBuilder()
-                    .build()
-                chain.proceed(request)
+                val url = request.url().url()
+                    .toString()
+                    .replace(SingletonApi.URL_SIGA,SingletonApi.URL_API)
+                when(SingletonApi.destino){
+                    SingletonApi.API -> {
+                        val build = Request.Builder()
+                            .url(url)
+                            .headers(request.headers())
+
+                        if(request.method().lowercase() == "post"){
+                            request.body()?.let { build.post(it) }
+                        }
+
+                        if (request.method().lowercase() == "get"){
+                            build.get()
+                        }
+
+                        if(request.method().lowercase() == "patch"){
+                            request.body()?.let { build.patch(it) }
+                        }
+
+                        chain.proceed(build.build())
+                    }
+                    else ->{
+                        chain.proceed(request)
+                    }
+                }
             }
 
             if (!Companion::retrofit.isInitialized){

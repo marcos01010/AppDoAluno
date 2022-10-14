@@ -12,4 +12,7 @@ interface MateriaDao {
 
     @Query("select * from materia where aprovado = 0")
     fun buscarTodas(): List<Materia>
+
+    @Query("select sigla from materia where aprovado = 0")
+    fun buscarTodasSiglas(): List<String>
 }

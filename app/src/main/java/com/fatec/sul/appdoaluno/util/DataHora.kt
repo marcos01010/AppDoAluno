@@ -2,6 +2,10 @@ package com.fatec.sul.appdoaluno.util
 
 class DataHora {
     companion object{
+        fun minutesOf(tempo: String): Int{
+            return tempo.split(":")[1].toInt() + tempo.split(":")[0].toInt() * 60
+        }
+
         fun maiorHoraMinuto(hora1: String, hora2: String): String{
             val hora1Hora = hora1.split("-")[0].split(":")[0].toInt()
             val hora1Minutos = hora1.split("-")[0].split(":")[1].toInt()

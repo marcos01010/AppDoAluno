@@ -93,5 +93,31 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/etxSenha"/>
 
+    <TextView
+        android:id="@+id/txAuntenticaProfessor"
+        android:text="@string/codigo_verificacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnAutenticaSiga"
+        android:labelFor="@id/etxSenha"/>
+
+    <EditText
+        android:id="@+id/etxAutenticaProfessor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txAuntenticaProfessor"
+        android:autofillHints="password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnAutenticaProfessor"
+        android:text="@string/verificar"
+        android:enabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etxAutenticaProfessor"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

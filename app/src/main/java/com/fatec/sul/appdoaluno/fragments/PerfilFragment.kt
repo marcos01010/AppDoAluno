@@ -11,7 +11,9 @@ import com.fatec.sul.appdoaluno.R
 import com.fatec.sul.appdoaluno.databinding.FragmentPerfilBinding
 import com.fatec.sul.appdoaluno.factories.PerfilViewModelFactory
 import com.fatec.sul.appdoaluno.repository.PerfilRepository
+import com.fatec.sul.appdoaluno.util.SingletonProfessor
 import com.fatec.sul.appdoaluno.viewmodel.PerfilViewModel
+import com.google.android.material.navigation.NavigationView
 
 class PerfilFragment : Fragment(R.layout.fragment_perfil) {
     private lateinit var mBinding: FragmentPerfilBinding
@@ -41,6 +43,22 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
                 val senha = mBinding.etxSenha.text.toString()
                 mPerfilViewModel.autenticarSiga(usuario,senha)
             }
+        }
+
+        mBinding.btnAutenticaProfessor.setOnClickListener{
+            //TODO verificar no servidor
+            SingletonProfessor.hashChamada = mBinding.etxAutenticaProfessor.text.toString()
+            val menu = view.rootView.findViewById<NavigationView>(R.id.navigationView).menu
+
+            menu.findItem(R.id.abrirChamadaFragment).isVisible = true
+            menu.findItem(R.id.materiaProfessorFragment).isVisible = true
+
+            menu.findItem(R.id.materiaFragment).isVisible = false
+            menu.findItem(R.id.professorFragment).isVisible = false
+            menu.findItem(R.id.chamadaFragment).isVisible = false
+            menu.findItem(R.id.horarioFragment).isVisible = false
+
+            Toast.makeText(context,"Bem vindo Professor", Toast.LENGTH_LONG).show()
         }
 
         mPerfilViewModel.aluno.observe(viewLifecycleOwner){ aluno ->
