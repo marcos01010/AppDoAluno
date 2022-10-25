@@ -12,8 +12,6 @@ import com.fatec.sul.appdoaluno.model.api.Chamada
 import java.util.function.Consumer
 
 class ChamadaAdapter(private val chamadas: List<Chamada>, private val onResposta: Consumer<Long>) : Adapter<ChamadaAdapter.ChamadaViewHolder>() {
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChamadaViewHolder {
         return ChamadaViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.row_chamada,parent,false))

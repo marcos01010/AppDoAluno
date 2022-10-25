@@ -8,7 +8,7 @@ import com.fatec.sul.appdoaluno.model.Aluno
 import com.fatec.sul.appdoaluno.model.Horario
 import com.fatec.sul.appdoaluno.model.Materia
 
-@Database(entities = [Aluno::class,Materia::class,Horario::class], version = 4, exportSchema = false)
+@Database(entities = [Aluno::class,Materia::class,Horario::class], version = 5, exportSchema = false)
 abstract class DataBase: RoomDatabase() {
     abstract fun alunoDao(): AlunoDao
     abstract fun materiaDao(): MateriaDao

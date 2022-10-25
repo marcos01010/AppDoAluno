@@ -1,5 +1,7 @@
 package com.fatec.sul.appdoaluno.util
 
+import com.fatec.sul.appdoaluno.model.api.Turno
+
 class DataHora {
     companion object{
         fun minutesOf(tempo: String): Int{
@@ -81,6 +83,20 @@ class DataHora {
                 6 -> return "Sexta-Feira"
                 7 -> return "Sábado"
                 else -> {""}
+            }
+        }
+
+        fun horaToTurno(horario: String): Turno{
+            return when (horario.split("-")[0].split(":")[0].toInt()) {
+                in 7..13 -> {
+                    Turno(1L, "")
+                }
+                in 14..18 -> {
+                    Turno(2 , "")
+                }
+                else -> {
+                    Turno(3 , "")
+                }
             }
         }
     }

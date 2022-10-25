@@ -1,6 +1,5 @@
 package com.fatec.sul.appdoaluno.fragments
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +8,17 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fatec.sul.appdoaluno.R
+import com.fatec.sul.appdoaluno.adapters.ChamadaAbertaAdapter
 import com.fatec.sul.appdoaluno.databinding.FragmentAbrirChamadaBinding
 import com.fatec.sul.appdoaluno.factories.MateriaViewModelFactory
 import com.fatec.sul.appdoaluno.model.api.Atividade
 import com.fatec.sul.appdoaluno.model.api.Chamada
 import com.fatec.sul.appdoaluno.model.api.Materia
 import com.fatec.sul.appdoaluno.model.api.Sala
+import com.fatec.sul.appdoaluno.repository.ChamadaRepository
 import com.fatec.sul.appdoaluno.repository.MateriaRepository
 import com.fatec.sul.appdoaluno.util.DataHora
 import com.fatec.sul.appdoaluno.util.SingletonProfessor
@@ -42,7 +45,7 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
         var materias = listOf<Materia>()
         mMateriaViewModel = ViewModelProvider(
             this,
-            MateriaViewModelFactory(MateriaRepository(requireContext()))
+            MateriaViewModelFactory(MateriaRepository(requireContext()), ChamadaRepository(requireContext()))
         )[MateriaViewModel::class.java]
 
         mMateriaViewModel.buscarMateriasProfessor(SingletonProfessor.hashChamada)
@@ -59,6 +62,20 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
             }
         }
 
+        mMateriaViewModel.buscarChamadas(SingletonProfessor.hashChamada)
+
+        mMateriaViewModel.chamadas.observe(viewLifecycleOwner){ chamadas ->
+            val chamadaAbertaAdapter = ChamadaAbertaAdapter(chamadas){chamadaID ->
+                val navController = Navigation.findNavController(view)
+                navController.navigate(AbrirChamadaFragmentDirections
+                    .actionAbrirChamadaFragmentToAlunosFragment(chamadaID))
+            }
+            val recyclerChamadasAbertas = mBinding.recyclerChamadasAbertas
+            recyclerChamadasAbertas.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL,false)
+            recyclerChamadasAbertas.adapter = chamadaAbertaAdapter
+        }
+
         mBinding.btnAbrirChamada.setOnClickListener {
             val sala: Sala? = null
             val materia = materias[mBinding.spMateria.selectedItemPosition]
@@ -73,7 +90,7 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
                     .ofInstant(calendar.time.toInstant(), TimeZone.getDefault().toZoneId())
                     .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME).toString()
                 mMateriaViewModel.abrirChamada(Chamada(0L,atividade, professor, tempoZona))
-
+                mMateriaViewModel.buscarChamadas(SingletonProfessor.hashChamada)
             }else{
                 Toast.makeText(context,"Não foi possível abrir a chamada",Toast.LENGTH_LONG).show()
             }

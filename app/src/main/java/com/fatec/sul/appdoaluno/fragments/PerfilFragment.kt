@@ -63,7 +63,7 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
 
         mPerfilViewModel.aluno.observe(viewLifecycleOwner){ aluno ->
             if (aluno == null){
-                mPerfilViewModel.autenticacao.observe(viewLifecycleOwner) {resultado ->
+                mPerfilViewModel.autenticacao.observe(viewLifecycleOwner) { resultado ->
                     Toast.makeText(requireContext(), resultado.toString(), Toast.LENGTH_LONG).show()
                 }
                 mBinding.btnAutenticaSiga.isEnabled = true

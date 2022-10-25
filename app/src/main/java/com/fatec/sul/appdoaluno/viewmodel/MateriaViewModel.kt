@@ -4,15 +4,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fatec.sul.appdoaluno.model.Materia
 import com.fatec.sul.appdoaluno.model.api.Chamada
+import com.fatec.sul.appdoaluno.repository.ChamadaRepository
 import com.fatec.sul.appdoaluno.repository.MateriaRepository
 import kotlinx.coroutines.*
 
-class MateriaViewModel(private val materiaRepository: MateriaRepository) : ViewModel() {
+class MateriaViewModel(private val materiaRepository: MateriaRepository, private val chamadaRepository: ChamadaRepository) : ViewModel() {
     val materias = MutableLiveData<List<Materia>>()
     val materiasProfessor = MutableLiveData<List<com.fatec.sul.appdoaluno.model.api.Materia>>()
     val materiasAssumidas = MutableLiveData<List<com.fatec.sul.appdoaluno.model.api.Materia>>()
     val assumirMateria = MutableLiveData<Boolean>()
     val chamadaCriada = MutableLiveData<Boolean>()
+    val chamadas = MutableLiveData<List<Chamada>>()
 
     fun buscarMaterias() {
         CoroutineScope(Dispatchers.Main).launch {
@@ -53,9 +55,18 @@ class MateriaViewModel(private val materiaRepository: MateriaRepository) : ViewM
     fun abrirChamada(chamada: Chamada) {
         CoroutineScope(Dispatchers.Main).launch {
             val resultado = withContext(Dispatchers.Default){
-                materiaRepository.abrirChamada(chamada)
+                chamadaRepository.abrirChamada(chamada)
             }
             chamadaCriada.value = resultado
+        }
+    }
+
+    fun buscarChamadas(hashChamada: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val resultado = withContext(Dispatchers.Default){
+                chamadaRepository.buscarChamadas(hashChamada)
+            }
+            chamadas.value = resultado
         }
     }
 }

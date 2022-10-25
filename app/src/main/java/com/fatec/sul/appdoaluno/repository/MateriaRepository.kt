@@ -124,34 +124,4 @@ class MateriaRepository(context: Context) {
             }
         }
     }
-
-    suspend fun abrirChamada(chamada: Chamada) :Boolean{
-        return withContext(Dispatchers.Default){
-            try {
-                SingletonApi.destino = SingletonApi.API
-                val response = mRemote.abrirChamada(chamada).execute()
-                SingletonApi.destino = SingletonApi.SIGA
-                when (response.code()) {
-                    200 -> {
-                        true
-                    }
-                    201 -> {
-                        true
-                    }
-                    400 -> {
-                        false
-                    }
-                    500 -> {
-                        false
-                    }
-                    else -> {
-                        false
-                    }
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                false
-            }
-        }
-    }
 }

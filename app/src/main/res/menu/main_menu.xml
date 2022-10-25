@@ -10,9 +10,9 @@
         android:title="@string/reunir"/>
     <item android:id="@+id/abrirChamadaFragment"
         android:title="@string/abrir_chamada"
-        android:visible="false"/>
+        />
     <item android:id="@+id/materiaProfessorFragment"
-        android:visible="false"
+
         android:title="@string/materias"/>
     <item android:id="@+id/horarioFragment"
     android:title="@string/horaio"/>

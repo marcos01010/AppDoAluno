@@ -11,6 +11,7 @@ import com.fatec.sul.appdoaluno.R
 import com.fatec.sul.appdoaluno.adapters.MateriaAdapter
 import com.fatec.sul.appdoaluno.databinding.FragmentMateriaBinding
 import com.fatec.sul.appdoaluno.factories.MateriaViewModelFactory
+import com.fatec.sul.appdoaluno.repository.ChamadaRepository
 import com.fatec.sul.appdoaluno.repository.MateriaRepository
 import com.fatec.sul.appdoaluno.viewmodel.MateriaViewModel
 
@@ -31,7 +32,7 @@ class MateriaFragment : Fragment(R.layout.fragment_materia) {
         super.onViewCreated(view, savedInstanceState)
         mMateriaViewModel = ViewModelProvider(
             this,
-            MateriaViewModelFactory(MateriaRepository(requireContext()))
+            MateriaViewModelFactory(MateriaRepository(requireContext()), ChamadaRepository(requireContext()))
         )[MateriaViewModel::class.java]
 
         mMateriaViewModel.buscarMaterias()

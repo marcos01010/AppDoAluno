@@ -12,4 +12,10 @@ interface AlunoDao {
 
     @Query("SELECT * FROM aluno")
     fun buscarTodos():List<Aluno>
+
+    @Query("SELECT * FROM aluno limit 1")
+    fun buscarAluno(): Aluno
+
+    @Query("delete from aluno")
+    fun deletarTodos()
 }

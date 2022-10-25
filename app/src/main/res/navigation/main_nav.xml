@@ -44,16 +44,23 @@
             android:id="@+id/action_abrirChamadaFragment_to_alunosFragment"
             app:destination="@id/alunosFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/alunosFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.AlunosFragment"
         android:label="AlunosFragment"
-        tools:layout="@layout/fragment_alunos" />
+        tools:layout="@layout/fragment_alunos">
+        <argument
+            android:name="chamadaID"
+            app:argType="long" />
+    </fragment>
+
     <fragment
         android:id="@+id/materiaProfessorFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.MateriaProfessorFragment"
         android:label="MateriaProfessorFragment"
         tools:layout="@layout/fragment_materia_professor"/>
+
     <fragment
         android:id="@+id/horarioFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.HorarioFragment"

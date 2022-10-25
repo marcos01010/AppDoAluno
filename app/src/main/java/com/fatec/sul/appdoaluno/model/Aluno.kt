@@ -39,4 +39,7 @@ data class Aluno (
     @SerializedName("MPW0041vFALTA")
     @ColumnInfo(name = "prazo")
     var prazo: Int?,
+
+    @ColumnInfo(name = "usuarioID")
+    var usuarioID: Long,
 )

@@ -39,6 +39,10 @@ class ChamadaFragment : Fragment(R.layout.fragment_chamada){
             Toast.makeText(context, resposta, Toast.LENGTH_LONG).show()
         }
 
+        mChamadaViewModel.isChamadaRespondida.observe(viewLifecycleOwner){ resposta ->
+            Toast.makeText(context, resposta.toString(), Toast.LENGTH_LONG).show()
+        }
+
         mChamadaViewModel.chamadas.observe(viewLifecycleOwner){ chamadas ->
             val chamadaAdapter = ChamadaAdapter(chamadas){ chamadaID ->
                 mChamadaViewModel.responderChamada(chamadaID)
@@ -48,6 +52,7 @@ class ChamadaFragment : Fragment(R.layout.fragment_chamada){
                 LinearLayoutManager.VERTICAL,false)
             recyclerChamada.adapter = chamadaAdapter
         }
+
     }
 
 }

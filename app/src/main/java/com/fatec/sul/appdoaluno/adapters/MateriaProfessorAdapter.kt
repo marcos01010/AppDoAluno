@@ -62,7 +62,7 @@ class MateriaProfessorAdapter(val materias: List<Materia>, val context: Context,
             }
             assumir.setOnClickListener{
                 listener.accept(materia.apply {
-                    this.professor = Usuario(0L,"","", Perfil(0L,""),SingletonProfessor.hashChamada)
+                    this.professor = Usuario(0L,"","", Perfil(0L,""),SingletonProfessor.hashChamada, 0L)
                 })
             }
         }
