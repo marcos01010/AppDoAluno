@@ -6,6 +6,7 @@ import com.fatec.sul.appdoaluno.model.Horario
 import com.fatec.sul.appdoaluno.model.Login
 import com.fatec.sul.appdoaluno.model.api.Materia
 import com.fatec.sul.appdoaluno.model.api.Perfil
+import com.fatec.sul.appdoaluno.model.api.Turno
 import com.fatec.sul.appdoaluno.model.api.Usuario
 import com.fatec.sul.appdoaluno.services.local.DataBase
 import com.fatec.sul.appdoaluno.services.remote.ApiService
@@ -72,12 +73,26 @@ class PerfilRepository(context: Context){
                 }
             }
 
+            horarioDao.deletarTodos()
+            materiaDao.deletarTodas()
+
             val horariosCadastrados = horarioDao.buscarTodos()
 
             val horariosNaoCadastrados = horarios.filter{ horario ->
                 horariosCadastrados.none { horarioCadastrado ->
-                        horarioCadastrado.sigla == horario.sigla
-                                && horarioCadastrado.turno == horario.turno
+                        horarioCadastrado.sigla == horario.sigla && horarioCadastrado.turno == horario.turno
+                }
+            }
+
+            horariosNaoCadastrados.forEach { horario ->
+                horario.turno = DataHora.horaToTurno(horario.hora, horario.diaDaSemana).id
+            }
+
+            materias.forEach { materia ->
+                horarios.filter {
+                    it.sigla == materia.sigla
+                }.forEach{
+                        materia.turno = it.turno
                     }
             }
 
@@ -152,8 +167,9 @@ class PerfilRepository(context: Context){
 
     private fun salvarMateriaAPI(materias: List<com.fatec.sul.appdoaluno.model.Materia>):Boolean{
         SingletonApi.destino = SingletonApi.API
+        val usuario = Usuario(alunoDao.buscarAluno().usuarioID,"","",Perfil(0L,""),"",0L)
         val materiasApi = materias.map{ m ->
-            Materia(m.sigla,m.descricao,null, DataHora.horaToTurno(horarioDao.buscarHorario(m.sigla)))
+            Materia(m.sigla,m.descricao,null, Turno(m.turno, ""), listOf(usuario))
         }
         val response = mRemoteApi.salvarMateriaAPI(materiasApi).execute()
         SingletonApi.destino = SingletonApi.SIGA

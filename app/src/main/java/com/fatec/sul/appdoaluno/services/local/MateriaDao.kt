@@ -15,4 +15,7 @@ interface MateriaDao {
 
     @Query("select sigla from materia where aprovado = 0")
     fun buscarTodasSiglas(): List<String>
+
+    @Query("delete from materia")
+    fun deletarTodas();
 }

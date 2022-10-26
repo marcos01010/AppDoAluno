@@ -11,7 +11,7 @@ import com.fatec.sul.appdoaluno.R
 import com.fatec.sul.appdoaluno.model.api.Chamada
 import java.util.function.Consumer
 
-class ChamadaAbertaAdapter(private val chamadasAbertas : List<Chamada>, val onClickListerner : Consumer<Long>) : Adapter<ChamadaAbertaAdapter.ChamadaAbertaViewHolder>() {
+class ChamadaAbertaAdapter(private val chamadasAbertas : List<Chamada>, private val onClickListerner : Consumer<Long>) : Adapter<ChamadaAbertaAdapter.ChamadaAbertaViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChamadaAbertaViewHolder {
         return ChamadaAbertaViewHolder(
             LayoutInflater.from(parent.context)

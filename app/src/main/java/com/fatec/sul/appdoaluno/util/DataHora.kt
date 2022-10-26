@@ -86,16 +86,20 @@ class DataHora {
             }
         }
 
-        fun horaToTurno(horario: String): Turno{
+        fun horaToTurno(horario: String, diaDaSemana: String): Turno{
+            if(diaDaSemana == "Sábado" || diaDaSemana == "Sabado"){
+                return Turno(3, "Noite")
+            }
+
             return when (horario.split("-")[0].split(":")[0].toInt()) {
                 in 7..13 -> {
-                    Turno(1L, "")
+                    Turno(1, "Dia")
                 }
                 in 14..18 -> {
-                    Turno(2 , "")
+                    Turno(2 , "Tarde")
                 }
                 else -> {
-                    Turno(3 , "")
+                    Turno(3 , "Noite")
                 }
             }
         }

@@ -57,6 +57,7 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
         }
 
         mMateriaViewModel.chamadaCriada.observe(viewLifecycleOwner){
+            mMateriaViewModel.buscarChamadas(SingletonProfessor.hashChamada)
             if(it){
                 Toast.makeText(context,"Chamada criada",Toast.LENGTH_LONG).show()
             }

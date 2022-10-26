@@ -15,4 +15,7 @@ interface HorarioDao {
 
     @Query("select hora from horario where sigla like :sigla")
     fun buscarHorario(sigla: String): String
+
+    @Query("delete from horario")
+    fun deletarTodos();
 }
