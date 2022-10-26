@@ -6,10 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "horario")
 class Horario (
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Long = 0L,
     @ColumnInfo(name = "turno")
     var turno: Int = 0,
     @ColumnInfo(name = "sigla")
-    @PrimaryKey
     var sigla: String = "",
     @ColumnInfo(name = "hora")
     var hora: String = "",

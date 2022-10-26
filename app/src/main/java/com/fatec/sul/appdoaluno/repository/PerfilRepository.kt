@@ -2,6 +2,7 @@ package com.fatec.sul.appdoaluno.repository
 
 import android.content.Context
 import com.fatec.sul.appdoaluno.model.Aluno
+import com.fatec.sul.appdoaluno.model.Horario
 import com.fatec.sul.appdoaluno.model.Login
 import com.fatec.sul.appdoaluno.model.api.Materia
 import com.fatec.sul.appdoaluno.model.api.Perfil
@@ -14,6 +15,7 @@ import com.fatec.sul.appdoaluno.util.Document
 import com.fatec.sul.appdoaluno.util.SingletonApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.stream.Collectors
 
 class PerfilRepository(context: Context){
     private val mRemote = RetrofitClient.createService(FatecService::class.java)
@@ -70,7 +72,16 @@ class PerfilRepository(context: Context){
                 }
             }
 
-            horarioDao.save(horarios)
+            val horariosCadastrados = horarioDao.buscarTodos()
+
+            val horariosNaoCadastrados = horarios.filter{ horario ->
+                horariosCadastrados.none { horarioCadastrado ->
+                        horarioCadastrado.sigla == horario.sigla
+                                && horarioCadastrado.turno == horario.turno
+                    }
+            }
+
+            horarioDao.save(horariosNaoCadastrados)
             materiaDao.save(materias)
             salvarMateriaAPI(materias)
             true
