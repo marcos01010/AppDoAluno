@@ -81,7 +81,6 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
             val sala: Sala? = null
             val materia = materias[mBinding.spMateria.selectedItemPosition]
             val professor = materias[mBinding.spMateria.selectedItemPosition].professor
-            val atividade = Atividade(0L,materia, sala)
             if(professor != null && professor.hashChamada == SingletonProfessor.hashChamada &&
                 materia.sigla.isNotEmpty()){
                 val tempo = mBinding.txTempoChamada.text.toString()
@@ -90,7 +89,7 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
                 val tempoZona = ZonedDateTime
                     .ofInstant(calendar.time.toInstant(), TimeZone.getDefault().toZoneId())
                     .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME).toString()
-                mMateriaViewModel.abrirChamada(Chamada(0L,atividade, professor, tempoZona))
+                mMateriaViewModel.abrirChamada(Chamada(0L, professor.id, materia.sigla, materia.descricao,tempoZona,professor.nome))
                 mMateriaViewModel.buscarChamadas(SingletonProfessor.hashChamada)
             }else{
                 Toast.makeText(context,"Não foi possível abrir a chamada",Toast.LENGTH_LONG).show()

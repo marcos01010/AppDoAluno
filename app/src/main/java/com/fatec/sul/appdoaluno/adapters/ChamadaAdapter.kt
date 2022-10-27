@@ -31,8 +31,8 @@ class ChamadaAdapter(private val chamadas: List<Chamada>, private val onResposta
             val professor = itemView.findViewById<TextView>(R.id.txProfessor)
             val imgRespostaChamada = itemView.findViewById<ImageView>(R.id.imgRespostaChamada)
 
-            nomeMateria.text = chamada.atividade.materia.descricao
-            "${chamada.professor.nome} ${chamada.professor.sobreNome}".also { professor.text = it }
+            nomeMateria.text = chamada.descricao
+            chamada.nomeProfessor.also { professor.text = it }
             imgRespostaChamada.setOnClickListener {
                 onResposta.accept(chamada.id)
             }

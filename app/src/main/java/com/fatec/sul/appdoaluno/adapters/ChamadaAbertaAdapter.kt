@@ -28,7 +28,7 @@ class ChamadaAbertaAdapter(private val chamadasAbertas : List<Chamada>, private 
 
     class ChamadaAbertaViewHolder(itemView: View) : ViewHolder(itemView) {
         fun biding(chamadaAberta : Chamada, onClickListerner: Consumer<Long>){
-            itemView.findViewById<TextView>(R.id.txNomeMateiraAberta).text = chamadaAberta.atividade.materia.descricao
+            itemView.findViewById<TextView>(R.id.txNomeMateiraAberta).text = chamadaAberta.descricao
             itemView.findViewById<ConstraintLayout>(R.id.constRow).setOnClickListener {
                 onClickListerner.accept(chamadaAberta.id)
             }

@@ -6,6 +6,8 @@ import java.time.ZonedDateTime
 import java.util.*
 
 data class Chamada (@SerializedName("id") val id:Long,
-                    @SerializedName("atividade") val atividade: Atividade,
-                    @SerializedName("professor") val professor: Usuario,
-                    @SerializedName("data") val data: String)
+                    @SerializedName("professorID") val professorID: Long,
+                    @SerializedName("sigla") val sigla: String,
+                    @SerializedName("descricao") val descricao: String,
+                    @SerializedName("data") val data: String,
+                    @SerializedName("nomeProfeddor") val nomeProfessor: String)
