@@ -20,7 +20,6 @@ class MateriaRepository(context: Context) {
     suspend fun buscarMaterias(): List<Materia> {
         return withContext(Dispatchers.Default){
             materiaDao.buscarTodas()
-
         }
     }
 

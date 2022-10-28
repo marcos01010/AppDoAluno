@@ -7,18 +7,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AcenoFragment">
 
+    <TextView
+        android:id="@+id/lblMateriaAceno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/local_reuniao"
+        android:labelFor="@id/etxDescricaoAceno"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <Spinner
         android:id="@+id/spLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/lblMateriaAceno"/>
+
+    <TextView
+        android:id="@+id/lblLocal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/materia"
+        android:labelFor="@id/etxDescricaoAceno"
+        app:layout_constraintTop_toBottomOf="@+id/spLocal"/>
+
+    <Spinner
+        android:id="@+id/spMateriaAceno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lblLocal"/>
+
+    <TextView
+        android:id="@+id/lblDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/descreva_o_motivo"
+        android:labelFor="@id/etxDescricaoAceno"
+        app:layout_constraintTop_toBottomOf="@+id/spMateriaAceno"/>
+
+    <EditText
+        android:id="@+id/etxDescricaoAceno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/lblDescricao"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btnCriarAceno"
         android:text="@string/reunir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/spLocal"/>
+        app:layout_constraintTop_toBottomOf="@+id/etxDescricaoAceno"/>
 
     <TextView
         android:id="@+id/lbOutrasReunioes"
@@ -30,7 +68,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAcenos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/lbOutrasReunioes"/>
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/lbOutrasReunioes"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

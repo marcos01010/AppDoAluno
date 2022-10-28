@@ -42,7 +42,7 @@ class MateriaProfessorAdapter(val materias: List<Materia>, val context: Context,
 
             sigla.text = materia.sigla
             descricao.text = materia.descricao
-            if (materia.professor == null){
+            if (materia == null){
                 professor.text = context.getString(R.string.sem_professor_declarado)
             }
             materia.professor?.let {

@@ -1,8 +1,7 @@
 package com.fatec.sul.appdoaluno.services.remote
 
-import com.fatec.sul.appdoaluno.model.api.Chamada
-import com.fatec.sul.appdoaluno.model.api.Materia
-import com.fatec.sul.appdoaluno.model.api.Usuario
+import com.fatec.sul.appdoaluno.model.api.*
+import com.fatec.sul.appdoaluno.model.api.delivery.AcenoDelivery
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -36,4 +35,13 @@ interface ApiService {
 
     @POST("/usuario/novo")
     fun salvarAlunoApi(@Body usuario: Usuario): Call<Usuario>
+
+    @GET("/sala")
+    fun buscarLocais(): Call<List<SalaApi>>
+
+    @POST("/aceno")
+    fun criarAceno(@Body aceno: Aceno): Call<Boolean>
+
+    @GET("/aceno")
+    fun buscarAcenos(@Query("id") id:Long): Call<List<AcenoDelivery>>
 }

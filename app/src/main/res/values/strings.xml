@@ -35,4 +35,7 @@
     <string name="assumir">Assumir</string>
     <string name="sem_professor_declarado">Sem professor declarado</string>
     <string name="informacao">Informação</string>
+    <string name="descreva_o_motivo">Descreva o motivo:</string>
+    <string name="local_reuniao">Local Reunião:</string>
+    <string name="materia">Matéria:</string>
 </resources>

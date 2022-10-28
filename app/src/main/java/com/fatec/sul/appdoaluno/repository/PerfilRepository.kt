@@ -169,7 +169,7 @@ class PerfilRepository(context: Context){
         SingletonApi.destino = SingletonApi.API
         val usuario = Usuario(alunoDao.buscarAluno().usuarioID,"","",Perfil(0L,""),"",0L)
         val materiasApi = materias.map{ m ->
-            Materia(m.sigla,m.descricao,null, Turno(m.turno, ""), listOf(usuario))
+            Materia(m.sigla,m.descricao,null, Turno(m.turno, ""),0, listOf(usuario))
         }
         val response = mRemoteApi.salvarMateriaAPI(materiasApi).execute()
         SingletonApi.destino = SingletonApi.SIGA

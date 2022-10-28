@@ -6,6 +6,7 @@ import com.fatec.sul.appdoaluno.model.api.Usuario
 import com.fatec.sul.appdoaluno.services.local.DataBase
 import com.fatec.sul.appdoaluno.services.remote.ApiService
 import com.fatec.sul.appdoaluno.util.SingletonApi
+import com.fatec.sul.appdoaluno.util.SingletonProfessor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.function.Consumer

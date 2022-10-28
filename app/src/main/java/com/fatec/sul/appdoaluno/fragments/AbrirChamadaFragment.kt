@@ -14,10 +14,7 @@ import com.fatec.sul.appdoaluno.R
 import com.fatec.sul.appdoaluno.adapters.ChamadaAbertaAdapter
 import com.fatec.sul.appdoaluno.databinding.FragmentAbrirChamadaBinding
 import com.fatec.sul.appdoaluno.factories.MateriaViewModelFactory
-import com.fatec.sul.appdoaluno.model.api.Atividade
-import com.fatec.sul.appdoaluno.model.api.Chamada
-import com.fatec.sul.appdoaluno.model.api.Materia
-import com.fatec.sul.appdoaluno.model.api.Sala
+import com.fatec.sul.appdoaluno.model.api.*
 import com.fatec.sul.appdoaluno.repository.ChamadaRepository
 import com.fatec.sul.appdoaluno.repository.MateriaRepository
 import com.fatec.sul.appdoaluno.util.DataHora
@@ -78,6 +75,7 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
         }
 
         mBinding.btnAbrirChamada.setOnClickListener {
+            //TODO Refatorar esta merda
             val sala: Sala? = null
             val materia = materias[mBinding.spMateria.selectedItemPosition]
             val professor = materias[mBinding.spMateria.selectedItemPosition].professor
@@ -85,11 +83,21 @@ class AbrirChamadaFragment : Fragment(R.layout.fragment_abrir_chamada){
                 materia.sigla.isNotEmpty()){
                 val tempo = mBinding.txTempoChamada.text.toString()
                 val calendar = Calendar.getInstance(TimeZone.getDefault())
+                //val professor = Usuario(0L,"","", Perfil(2L, ""),SingletonProfessor.hashChamada, 0L)
+                val perfil = Perfil(2L,"Professor")
+                professor.perfil = perfil
+                var turno = 1
+                if(materia.turnoID != null ){
+                    turno = materia.turnoID
+                }
+                val atividade = Atividade(0L, Materia(materia.sigla,"",null,Turno(turno,""),0,
+                    listOf()
+                ), Sala(0L, Predio(0, ""), 0, 0))
                 calendar.add(Calendar.MINUTE, DataHora.minutesOf(tempo))
                 val tempoZona = ZonedDateTime
                     .ofInstant(calendar.time.toInstant(), TimeZone.getDefault().toZoneId())
                     .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME).toString()
-                mMateriaViewModel.abrirChamada(Chamada(0L, professor.id, materia.sigla, materia.descricao,tempoZona,professor.nome))
+                mMateriaViewModel.abrirChamada(Chamada(0L, professor, materia.sigla, materia.descricao,tempoZona,professor.nome, atividade))
                 mMateriaViewModel.buscarChamadas(SingletonProfessor.hashChamada)
             }else{
                 Toast.makeText(context,"Não foi possível abrir a chamada",Toast.LENGTH_LONG).show()
