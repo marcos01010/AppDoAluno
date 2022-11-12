@@ -36,6 +36,17 @@
             android:layout_marginTop="8dp"/>
 
         <TextView
+            android:id="@+id/txDescricaoAceno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/descricao"
+            app:layout_constraintStart_toEndOf="@+id/txProfessor"
+            app:layout_constraintTop_toBottomOf="@+id/txNomeMateira"
+            app:layout_constraintEnd_toStartOf="@+id/txCountadorAcenos"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
             android:id="@+id/txCountadorAcenos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

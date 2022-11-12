@@ -7,17 +7,23 @@ import com.fatec.sul.appdoaluno.model.api.SalaApi
 import com.fatec.sul.appdoaluno.model.api.delivery.AcenoDelivery
 import com.fatec.sul.appdoaluno.repository.AcenoRepository
 import com.fatec.sul.appdoaluno.repository.MateriaRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.util.function.Consumer
+import kotlinx.coroutines.*
 
 class AcenoViewModel (private val materiaRepository: MateriaRepository, private val acenoRepository: AcenoRepository): ViewModel() {
     val salas = MutableLiveData<List<SalaApi>>()
     val acenoCriado = MutableLiveData<Boolean>()
+    val acenoConfirmado = MutableLiveData<Boolean>()
     val materias = MutableLiveData<List<Materia>>()
     val acenos = MutableLiveData<List<AcenoDelivery>>()
+    private var isResume = true;
+
+    fun pausarBusca(){
+        isResume = false;
+    }
+
+    fun iniciarBusca(){
+        isResume = true;
+    }
 
     fun listarChamadas(){
         CoroutineScope(Dispatchers.Main).launch {
@@ -39,10 +45,14 @@ class AcenoViewModel (private val materiaRepository: MateriaRepository, private 
 
     fun buscarAcenos() {
         CoroutineScope(Dispatchers.Main).launch {
-            val resultado = withContext(Dispatchers.Default){
-                acenoRepository.buscarAcenos()
+            withContext(Dispatchers.Default){
+                isResume = true
+                while (isResume){
+                    val list = acenoRepository.buscarAcenos()
+                    acenos.postValue(list)
+                    delay(30000)
+                }
             }
-            acenos.value = resultado
         }
     }
 
@@ -55,5 +65,12 @@ class AcenoViewModel (private val materiaRepository: MateriaRepository, private 
         }
     }
 
-
+    fun confirmarAceno(id:Long){
+        CoroutineScope(Dispatchers.Main).launch {
+            val resultado = withContext(Dispatchers.Default){
+                acenoRepository.confirmarAceno(id)
+            }
+            acenoConfirmado.value = resultado
+        }
+    }
 }

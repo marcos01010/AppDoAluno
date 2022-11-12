@@ -38,4 +38,10 @@
     <string name="descreva_o_motivo">Descreva o motivo:</string>
     <string name="local_reuniao">Local Reunião:</string>
     <string name="materia">Matéria:</string>
+    <string name="descricao">Descrição</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="recado">Recado:</string>
+    <string name="acoes">Ações:</string>
+    <string name="solicitar_controle">Solicitar Controle</string>
+    <string name="enviar">Enviar</string>
 </resources>

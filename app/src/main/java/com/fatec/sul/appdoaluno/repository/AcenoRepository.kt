@@ -50,40 +50,53 @@ class AcenoRepository (context: Context){
         }
     }
 
-    suspend fun buscarAcenos(): List<AcenoDelivery>{
+    suspend fun confirmarAceno(id:Long): Boolean{
         return withContext(Dispatchers.Default){
             try {
                 SingletonApi.destino = SingletonApi.API
-                val response = mRemote.buscarAcenos(alunoDao.buscarAluno().usuarioID).execute()
+                val code = mRemote.confirmarAceno(id).execute().code()
                 SingletonApi.destino = SingletonApi.SIGA
-                val acenos = response.body()
 
-                when(response.code()){
-                    200 -> {
-                        //.accept("Busca realizada com sucesso")
-                        acenos ?: listOf()
-                    }
-                    204 -> {
-                        //mensagem.accept("Nenhuma chamada aberta")
-                        acenos ?: listOf()
-                    }
-                    400 -> {
-                        //mensagem.accept("Erro 400: Contate o desenvolvedor ou tente novamente")
-                        listOf()
-                    }
-                    500 -> {
-                        //mensagem.accept("Erro 500: Contate o desenvolvedor ou tente novamente mais tarde")
-                        listOf()
-                    }
-                    else -> {
-                        //mensagem.accept("${response.code()}: Algo inesperado aconteceu")
-                        acenos ?: listOf()
-                    }
-                }
+                code in 200..299
             } catch (e: Exception) {
                 e.printStackTrace()
-                listOf()
+                false
             }
+        }
+    }
+
+    fun buscarAcenos(): List<AcenoDelivery>{
+        try {
+            SingletonApi.destino = SingletonApi.API
+            val response = mRemote.buscarAcenos(alunoDao.buscarAluno().usuarioID).execute()
+            SingletonApi.destino = SingletonApi.SIGA
+            val acenos = response.body()
+
+            when(response.code()){
+                200 -> {
+                    //.accept("Busca realizada com sucesso")
+                    return acenos ?: listOf()
+                }
+                204 -> {
+                    //mensagem.accept("Nenhuma chamada aberta")
+                    return acenos ?: listOf()
+                }
+                400 -> {
+                    //mensagem.accept("Erro 400: Contate o desenvolvedor ou tente novamente")
+                    return listOf()
+                }
+                500 -> {
+                    //mensagem.accept("Erro 500: Contate o desenvolvedor ou tente novamente mais tarde")
+                    return listOf()
+                }
+                else -> {
+                    //mensagem.accept("${response.code()}: Algo inesperado aconteceu")
+                    return acenos ?: listOf()
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return listOf()
         }
     }
 

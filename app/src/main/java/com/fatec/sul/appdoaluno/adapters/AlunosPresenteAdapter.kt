@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.fatec.sul.appdoaluno.R
 import com.fatec.sul.appdoaluno.model.api.Usuario
 
-class AlunosPresenteAdapter(val alunos : List<Usuario>) : Adapter<AlunosPresenteAdapter.AlunosPresentesViewHolder>() {
+class AlunosPresenteAdapter(private val alunos : List<Usuario>) : Adapter<AlunosPresenteAdapter.AlunosPresentesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlunosPresentesViewHolder {
         return AlunosPresentesViewHolder(
             LayoutInflater.from(parent.context)
@@ -18,7 +18,6 @@ class AlunosPresenteAdapter(val alunos : List<Usuario>) : Adapter<AlunosPresente
 
     override fun onBindViewHolder(holder: AlunosPresentesViewHolder, position: Int) {
         holder.biding(alunos[position])
-
     }
 
     override fun getItemCount(): Int {

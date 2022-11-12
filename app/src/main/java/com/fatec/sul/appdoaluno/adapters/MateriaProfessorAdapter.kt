@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.fatec.sul.appdoaluno.R
@@ -36,9 +37,7 @@ class MateriaProfessorAdapter(val materias: List<Materia>, val context: Context,
             val sigla = itemView.findViewById<TextView>(R.id.txSiglaMateriaProfessor)
             val descricao = itemView.findViewById<TextView>(R.id.txNomeMateiraProfessor)
             val professor = itemView.findViewById<TextView>(R.id.txNomeProfessorMateriaProfessor)
-            val confirmar = itemView.findViewById<Button>(R.id.btnConfirmar)
-            val adiar = itemView.findViewById<Button>(R.id.btnAdiar)
-            val assumir = itemView.findViewById<Button>(R.id.btnAssumir)
+            val recycler = itemView.findViewById<ConstraintLayout>(R.id.constraintMateriaProfessor)
 
             sigla.text = materia.sigla
             descricao.text = materia.descricao
@@ -48,22 +47,10 @@ class MateriaProfessorAdapter(val materias: List<Materia>, val context: Context,
             materia.professor?.let {
                 val nomeCompleto = "${it.nome} ${it.sobreNome}"
                 professor.text = nomeCompleto
-                if(it.hashChamada == SingletonProfessor.hashChamada){
-                    adiar.isEnabled = true
-                    confirmar.isEnabled = true
-                }
             }
 
-            confirmar.setOnClickListener {
-                //TODO confirmar materia
-            }
-            adiar.setOnClickListener {
-                //TODO confirmar materia
-            }
-            assumir.setOnClickListener{
-                listener.accept(materia.apply {
-                    this.professor = Usuario(0L,"","", Perfil(0L,""),SingletonProfessor.hashChamada, 0L)
-                })
+            recycler.setOnClickListener {
+                listener.accept(materia)
             }
         }
     }

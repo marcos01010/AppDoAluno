@@ -42,6 +42,9 @@ interface ApiService {
     @POST("/aceno")
     fun criarAceno(@Body aceno: Aceno): Call<Boolean>
 
+    @POST("/aceno/confirmar")
+    fun confirmarAceno(@Query("id") id: Long): Call<Any>
+
     @GET("/aceno")
     fun buscarAcenos(@Query("id") id:Long): Call<List<AcenoDelivery>>
 }

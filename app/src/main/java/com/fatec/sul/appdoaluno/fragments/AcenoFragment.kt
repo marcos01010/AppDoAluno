@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fatec.sul.appdoaluno.R
+import com.fatec.sul.appdoaluno.adapters.AcenoAdapter
 import com.fatec.sul.appdoaluno.databinding.FragmentAcenoBinding
 import com.fatec.sul.appdoaluno.factories.AcenoViewModelFactory
 import com.fatec.sul.appdoaluno.model.api.SalaApi
@@ -27,6 +29,21 @@ class AcenoFragment : Fragment(R.layout.fragment_aceno){
     ): View {
         mBinding = FragmentAcenoBinding.inflate(inflater)
         return mBinding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mAcenoViewModel.pausarBusca()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mAcenoViewModel.pausarBusca()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mAcenoViewModel.iniciarBusca()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,12 +73,22 @@ class AcenoFragment : Fragment(R.layout.fragment_aceno){
                 it.map { materia ->  materia.descricao })
         }
 
+        mAcenoViewModel.acenoConfirmado.observe(viewLifecycleOwner){
+            mAcenoViewModel.buscarAcenos()
+        }
+
         mAcenoViewModel.acenos.observe(viewLifecycleOwner){
-            val s = "";
+            val acenoAdapter = AcenoAdapter(it){ acenoID ->
+                mAcenoViewModel.confirmarAceno(acenoID)
+            }
+            val recyclerAcenos = mBinding.recyclerAcenos
+            recyclerAcenos.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL,false)
+            recyclerAcenos.adapter = acenoAdapter
         }
 
         mAcenoViewModel.acenoCriado.observe(viewLifecycleOwner){
-            Toast.makeText(context, it.toString(),Toast.LENGTH_LONG).show()
+            mAcenoViewModel.buscarAcenos()
         }
 
         mBinding.btnCriarAceno.setOnClickListener {

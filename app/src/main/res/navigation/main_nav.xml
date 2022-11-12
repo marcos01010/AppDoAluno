@@ -59,11 +59,25 @@
         android:id="@+id/materiaProfessorFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.MateriaProfessorFragment"
         android:label="MateriaProfessorFragment"
-        tools:layout="@layout/fragment_materia_professor"/>
+        tools:layout="@layout/fragment_materia_professor">
+        <action
+            android:id="@+id/action_materiaProfessorFragment_to_inforMateriaProfessorFragment"
+            app:destination="@id/inforMateriaProfessorFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/horarioFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.HorarioFragment"
         android:label="HorarioFragment"
         tools:layout="@layout/fragment_horario"/>
+
+    <fragment
+        android:id="@+id/inforMateriaProfessorFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.InforMateriaProfessorFragment"
+        android:label="InforMateriaProfessorFragment"
+        tools:layout="@layout/fragment_info_materia_professor">
+        <argument
+            android:name="materia"
+            app:argType="com.fatec.sul.appdoaluno.model.api.Materia" />
+    </fragment>
 </navigation>

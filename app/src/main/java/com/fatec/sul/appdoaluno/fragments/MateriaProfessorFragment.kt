@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fatec.sul.appdoaluno.R
 import com.fatec.sul.appdoaluno.adapters.MateriaProfessorAdapter
@@ -18,6 +20,7 @@ import com.fatec.sul.appdoaluno.viewmodel.MateriaViewModel
 class MateriaProfessorFragment : Fragment(R.layout.fragment_materia_professor){
     private lateinit var mMateriaViewModel: MateriaViewModel
     private lateinit var mBinding: FragmentMateriaProfessorBinding
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +37,7 @@ class MateriaProfessorFragment : Fragment(R.layout.fragment_materia_professor){
             this,
             MateriaViewModelFactory(MateriaRepository(requireContext()), ChamadaRepository(requireContext()))
         )[MateriaViewModel::class.java]
+        navController = Navigation.findNavController(view)
     }
 
     override fun onResume() {
@@ -41,7 +45,8 @@ class MateriaProfessorFragment : Fragment(R.layout.fragment_materia_professor){
         mMateriaViewModel.buscarMateriasProfessor()
         mMateriaViewModel.materiasProfessor.observe(viewLifecycleOwner){
             val materiaProfessorAdapter = MateriaProfessorAdapter(it,requireContext()){materia->
-                mMateriaViewModel.assumirMateria(materia)
+                navController.navigate(MateriaProfessorFragmentDirections
+                    .actionMateriaProfessorFragmentToInforMateriaProfessorFragment(materia))
             }
             val recyclerMateriasProfessor = mBinding.recyclerMateriasProfessor
             recyclerMateriasProfessor.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)

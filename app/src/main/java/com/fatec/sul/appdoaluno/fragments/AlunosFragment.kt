@@ -19,7 +19,7 @@ class AlunosFragment : Fragment(R.layout.fragment_alunos){
     private lateinit var mBinding: FragmentAlunosBinding
     private lateinit var mChamadaViewModel: ChamadaViewModel
 
-    val args : AlunosFragmentArgs by navArgs()
+    private val args : AlunosFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,

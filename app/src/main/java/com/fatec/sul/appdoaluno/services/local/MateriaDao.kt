@@ -18,4 +18,10 @@ interface MateriaDao {
 
     @Query("delete from materia")
     fun deletarTodas();
+
+    @Query("select professor from materia where professor not like ''")
+    fun buscarProfessores(): List<String>
+
+    @Query("select descricao from materia where professor like :nome")
+    fun buscarMateriaProfessor(nome: String): List<String>
 }
