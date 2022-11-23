@@ -64,7 +64,12 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
         mPerfilViewModel.aluno.observe(viewLifecycleOwner){ aluno ->
             if (aluno == null){
                 mPerfilViewModel.autenticacao.observe(viewLifecycleOwner) { resultado ->
-                    Toast.makeText(requireContext(), resultado.toString(), Toast.LENGTH_LONG).show()
+                    if(resultado){
+                        Toast.makeText(requireContext(), "Bem-vindo Aluno", Toast.LENGTH_LONG).show()
+                        mPerfilViewModel.buscarAluno()
+                    }else{
+                        Toast.makeText(requireContext(), "Não foi possível autenticar!", Toast.LENGTH_LONG).show()
+                    }
                 }
                 mBinding.btnAutenticaSiga.isEnabled = true
             }else{

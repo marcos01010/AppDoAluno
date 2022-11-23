@@ -5,10 +5,12 @@ import com.fatec.sul.appdoaluno.model.Horario
 import com.fatec.sul.appdoaluno.model.Materia
 import com.fatec.sul.appdoaluno.model.api.Chamada
 import com.fatec.sul.appdoaluno.model.api.Turno
+import com.fatec.sul.appdoaluno.model.api.Usuario
 import com.fatec.sul.appdoaluno.services.local.DataBase
 import com.fatec.sul.appdoaluno.services.remote.ApiService
 import com.fatec.sul.appdoaluno.util.DataHora
 import com.fatec.sul.appdoaluno.util.SingletonApi
+import com.fatec.sul.appdoaluno.util.SingletonProfessor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -97,7 +99,7 @@ class MateriaRepository(context: Context) {
         return withContext(Dispatchers.Default) {
             try {
                 SingletonApi.destino = SingletonApi.API
-                val response = mRemote.assumirMateria(materia).execute()
+                val response = mRemote.assumirMateria(materia.apply { professor = Usuario(hashChamada = SingletonProfessor.hashChamada) }).execute()
                 SingletonApi.destino = SingletonApi.SIGA
 
                 when (response.code()) {

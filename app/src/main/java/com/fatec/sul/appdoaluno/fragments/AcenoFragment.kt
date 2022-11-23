@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,7 +54,7 @@ class AcenoFragment : Fragment(R.layout.fragment_aceno){
             AcenoViewModelFactory(AcenoRepository(requireContext()),MateriaRepository(requireContext()))
         )[AcenoViewModel::class.java]
 
-        mAcenoViewModel.listarChamadas()
+        mAcenoViewModel.listarLocais()
         mAcenoViewModel.buscarMaterias()
         mAcenoViewModel.buscarAcenos()
 
@@ -63,7 +62,7 @@ class AcenoFragment : Fragment(R.layout.fragment_aceno){
             salas = it
             mBinding.spLocal.adapter = ArrayAdapter(requireContext(),
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                it.map { local ->  "Prédio: ${local.descricaoPredio} Sala: ${local.numero}" })
+                it.map { local ->  "${local.descricaoPredio} Sala: ${local.numero}" })
         }
 
         mAcenoViewModel.materias.observe(viewLifecycleOwner){

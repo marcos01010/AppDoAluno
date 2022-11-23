@@ -25,7 +25,7 @@ class AcenoViewModel (private val materiaRepository: MateriaRepository, private 
         isResume = true;
     }
 
-    fun listarChamadas(){
+    fun listarLocais(){
         CoroutineScope(Dispatchers.Main).launch {
             val resultado = withContext(Dispatchers.Default){
                 acenoRepository.buscarLocais()
@@ -34,7 +34,7 @@ class AcenoViewModel (private val materiaRepository: MateriaRepository, private 
         }
     }
 
-    fun criarAceno(sala: Int, descricao: String,materia: Materia) {
+    fun criarAceno(sala: Long, descricao: String,materia: Materia) {
         CoroutineScope(Dispatchers.Main).launch {
             val resultado = withContext(Dispatchers.Default){
                 acenoRepository.criarAceno(sala, descricao,materia)

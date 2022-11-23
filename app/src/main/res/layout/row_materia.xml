@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/txSiglaMateria"
-            android:layout_width="0dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Sigla"
             android:textSize="18sp"
@@ -29,13 +29,15 @@
             android:id="@+id/txDescricaoMateria"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Materia"
             android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/txSiglaMateria"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            />
+            app:layout_constraintStart_toEndOf="@+id/txSiglaMateria"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
 
         <TextView
             android:id="@+id/txProfessor"
@@ -95,7 +97,7 @@
             android:id="@+id/imgStatusMateria"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_on"
+            android:src="@drawable/ic_off"
             app:layout_constraintTop_toBottomOf="@+id/txProfessor"
             app:layout_constraintEnd_toEndOf="parent"
             android:contentDescription="@string/indicativo_status_materia"

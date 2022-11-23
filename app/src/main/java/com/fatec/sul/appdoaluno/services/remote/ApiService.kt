@@ -47,4 +47,10 @@ interface ApiService {
 
     @GET("/aceno")
     fun buscarAcenos(@Query("id") id:Long): Call<List<AcenoDelivery>>
+
+    @GET("/reserva")
+    fun buscarReservas(): Call<List<Reserva>>
+
+    @POST("/reserva/novo")
+    fun reservar(@Body reserva: Reserva): Call<Boolean>
 }

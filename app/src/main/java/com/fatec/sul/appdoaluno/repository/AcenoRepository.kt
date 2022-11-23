@@ -100,12 +100,12 @@ class AcenoRepository (context: Context){
         }
     }
 
-    suspend fun criarAceno(salaId: Int, descricao: String, materia: com.fatec.sul.appdoaluno.model.Materia) : Boolean{
+    suspend fun criarAceno(salaId: Long, descricao: String, materia: com.fatec.sul.appdoaluno.model.Materia) : Boolean{
         return withContext(Dispatchers.Default) {
             try {
                 val aluno = alunoDao.buscarAluno()
                 val usuario = Usuario(aluno.usuarioID)
-                val sala = Sala(id = salaId.toLong())
+                val sala = Sala(id = salaId)
                 val turno = Turno(materia.turno)
                 val atividade = Atividade(null, sala = sala, materia = Materia(sigla = materia.sigla, turno = turno))
                 val aceno = Aceno(sala, usuario, atividade, "", descricao)

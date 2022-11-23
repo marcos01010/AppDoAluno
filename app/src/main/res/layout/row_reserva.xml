@@ -15,29 +15,35 @@
         android:paddingBottom="4dp">
 
         <TextView
-            android:id="@+id/txNomeProfessor"
-            android:layout_width="0dp"
+            android:id="@+id/txSalaReserva"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/informacao"
+            android:text="Sala"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginTop="8dp"
+            />
 
         <TextView
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:id="@+id/txMaterias"
-            android:layout_width="0dp"
+            android:id="@+id/txSolicitanteReserva"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/informacao"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Solicitante"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txNomeProfessor" />
+            app:layout_constraintTop_toBottomOf="@+id/txSalaReserva"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/txPeriodoReserva"
+            android:text="@string/tempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txSolicitanteReserva"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/alunosFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.AlunosFragment"
-        android:label="AlunosFragment"
+        android:label="Presentes"
         tools:layout="@layout/fragment_alunos">
         <argument
             android:name="chamadaID"
@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/materiaProfessorFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.MateriaProfessorFragment"
-        android:label="MateriaProfessorFragment"
+        android:label="Matérias"
         tools:layout="@layout/fragment_materia_professor">
         <action
             android:id="@+id/action_materiaProfessorFragment_to_inforMateriaProfessorFragment"
@@ -68,16 +68,21 @@
     <fragment
         android:id="@+id/horarioFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.HorarioFragment"
-        android:label="HorarioFragment"
+        android:label="Horários"
         tools:layout="@layout/fragment_horario"/>
 
     <fragment
         android:id="@+id/inforMateriaProfessorFragment"
         android:name="com.fatec.sul.appdoaluno.fragments.InforMateriaProfessorFragment"
-        android:label="InforMateriaProfessorFragment"
+        android:label="Materias"
         tools:layout="@layout/fragment_info_materia_professor">
         <argument
             android:name="materia"
             app:argType="com.fatec.sul.appdoaluno.model.api.Materia" />
     </fragment>
+    <fragment
+        android:id="@+id/reservaFragment"
+        android:name="com.fatec.sul.appdoaluno.fragments.ReservaFragment"
+        android:label="Reservas"
+        tools:layout="@layout/fragment_reserva"/>
 </navigation>

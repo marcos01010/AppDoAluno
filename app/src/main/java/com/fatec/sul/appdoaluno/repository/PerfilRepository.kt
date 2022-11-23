@@ -131,14 +131,11 @@ class PerfilRepository(context: Context){
     }
 
     private fun salvarAlunoAPI(aluno: Aluno):Usuario?{
+        val s = aluno.nome.split(" ").stream().skip(1).reduce { acc, s -> "$acc $s" }
+        val usuario = Usuario(nome = aluno.nome.split(" ")[0], sobreNome = s.get(), ra = aluno.ra, perfil = Perfil(id = 2))
+
         SingletonApi.destino = SingletonApi.API//TODO melhorar transformação aluno para usuario
-        val response = mRemoteApi.salvarAlunoApi(Usuario(
-            0L,
-            aluno.nome.split(" ")[0],
-            aluno.nome.split(" ")[1],
-            Perfil(2,""),
-            "",
-            aluno.ra)).execute()
+        val response = mRemoteApi.salvarAlunoApi(usuario).execute()
         SingletonApi.destino = SingletonApi.SIGA
         
         return when(response.code()){
